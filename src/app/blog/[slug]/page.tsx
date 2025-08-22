@@ -9,7 +9,6 @@ import { client } from '../../../../sanity/lib/client';
 import { urlForImage } from '../../../../sanity/lib/image';
 import { getFileAsset } from '@sanity/asset-utils';
 import PostViewTracker from './PostViewTracker';
-// ✅ Import the CommentSection component
 import CommentSection from '../../components/CommentSection';
 
 // --- FONTS ---
@@ -26,13 +25,6 @@ const inter = Inter({
   display: 'swap',
   variable: '--font-inter',
 });
-
-// --- TYPES ---
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
 
 // --- DATA FETCHING ---
 async function getPost(slug: string) {
@@ -62,8 +54,7 @@ async function getPost(slug: string) {
       }
     }
   }`;
-  const post = await client.fetch(query, { slug });
-  return post;
+  return client.fetch(query, { slug });
 }
 
 // --- PORTABLE TEXT COMPONENTS ---
@@ -93,12 +84,7 @@ const ptComponents: PortableTextComponents = {
       return (
         <div className="my-8 flex items-center gap-4 rounded-lg border bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
           <IconFile className="h-8 w-8 flex-shrink-0 text-gray-400" />
-          <a
-            href={asset.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
-          >
+          <a href={asset.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 hover:underline dark:text-blue-400">
             {value.description || 'Download PDF'}
           </a>
         </div>
@@ -109,12 +95,7 @@ const ptComponents: PortableTextComponents = {
       return (
         <div className="my-8 flex items-center gap-4 rounded-lg border bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
           <IconLinkExternal className="h-8 w-8 flex-shrink-0 text-gray-400" />
-          <a
-            href={value.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
-          >
+          <a href={value.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 hover:underline dark:text-blue-400">
             {value.description || 'View External PDF'}
           </a>
         </div>
@@ -129,41 +110,19 @@ const ptComponents: PortableTextComponents = {
 };
 
 // --- SVG ICONS ---
-const IconArrowLeft = ({ className = 'w-5 h-5' }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-  </svg>
-);
-const IconCalendar = ({ className = 'w-5 h-5' }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-    <line x1="16" y1="2" x2="16" y2="6"></line>
-    <line x1="8" y1="2" x2="8" y2="6"></line>
-    <line x1="3" y1="10" x2="21" y2="10"></line>
-  </svg>
-);
-const IconFile = ({ className = 'w-6 h-6' }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-  </svg>
-);
-const IconLinkExternal = ({ className = 'w-6 h-6' }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-  </svg>
-);
+const IconArrowLeft = ({ className = "w-5 h-5" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>);
+const IconCalendar = ({ className = "w-5 h-5" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>);
+const IconFile = ({ className = "w-6 h-6" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>);
+const IconLinkExternal = ({ className = "w-6 h-6" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>);
 
-// --- MAIN COMPONENT ---
-export default async function BlogPostPage({ params }: BlogPostPageProps): Promise<JSX.Element> {
+// --- MAIN BLOG POST PAGE COMPONENT ---
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
   if (!post) notFound();
 
-  let coverImageUrl = 'https://placehold.co/1200x675';
-  if (post.coverImage?.asset) {
-    coverImageUrl = urlForImage(post.coverImage).width(1200).height(675).url();
-  } else if (post.coverImageUrl) {
-    coverImageUrl = post.coverImageUrl;
-  }
+  const coverImageUrl = post.coverImage?.asset
+    ? urlForImage(post.coverImage).width(1200).height(675).url()
+    : post.coverImageUrl || 'https://placehold.co/1200x675';
 
   const authorImage = post.author?.image?.asset
     ? urlForImage(post.author.image).width(80).height(80).url()
@@ -175,17 +134,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps): Promi
 
       <main className="font-inter bg-white dark:bg-gray-900 py-12 md:py-20">
         <div className="relative max-w-6xl mx-auto px-4">
-          {/* Share icons */}
+          
+          {/* Social Share */}
           <div className="absolute top-24 -left-32 hidden xl:flex flex-col gap-3">
             <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 -rotate-90 origin-bottom-right">Share</p>
             <div className="h-12 w-[1px] bg-gray-300 dark:bg-gray-700 mx-auto"></div>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <Link
-              href="/blog"
-              className="group mb-8 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-            >
+            <Link href="/blog" className="group mb-8 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">
               <IconArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
               Back to Blog
             </Link>
@@ -214,15 +171,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps): Promi
                   </div>
                 </div>
               </header>
-
+              
               <div className="mb-12">
-                <Image src={coverImageUrl} alt={post.title} width={1200} height={675} className="rounded-2xl shadow-xl w-full" priority />
+                <Image 
+                  src={coverImageUrl}
+                  alt={post.title} 
+                  width={1200} 
+                  height={675} 
+                  className="rounded-2xl shadow-xl w-full" 
+                  priority
+                />
               </div>
-
+              
               <div className="prose prose-lg lg:prose-xl max-w-none dark:prose-invert prose-headings:font-poppins prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500">
                 <PortableText value={post.body} components={ptComponents} />
               </div>
-
+              
               <hr className="my-12 border-gray-200 dark:border-gray-700" />
 
               <div className="flex items-center gap-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl">
@@ -234,9 +198,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps): Promi
                 </div>
               </div>
             </article>
-
+            
+            {/* Comments Section */}
             <CommentSection initialComments={post.comments || []} postId={post._id} />
+
           </div>
+
         </div>
       </main>
     </div>
