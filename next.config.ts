@@ -4,14 +4,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-      },
-      {
-        protocol: 'https',
         hostname: 'i.pravatar.cc',
       },
       {
@@ -19,6 +11,12 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
       {
+        // For Sanity images
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+      {
+        // ✅ ADD THIS FOR YOUTUBE THUMBNAILS
         protocol: 'https',
         hostname: 'i.ytimg.com',
       },
