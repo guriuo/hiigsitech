@@ -10,21 +10,17 @@ module.exports = {
   theme: {
     extend: {
         animation: {
-          // --- Existing animations ---
           'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
           tilt: 'tilt 10s linear infinite',
           'gradient-flow': 'gradient-flow 20s ease infinite',
           dash: 'dash 3s forwards',
           'accordion-down': 'accordion-down 0.2s ease-out',
           'accordion-up': 'accordion-up 0.2s ease-out',
-
-          // ✅ ADDED: New floating animations for particles
           'float-1': 'float 15s ease-in-out infinite',
           'float-2': 'float 20s ease-in-out infinite -5s',
           'float-3': 'float 18s ease-in-out infinite -10s',
         },
         keyframes: {
-            // ✅ ADDED: New keyframes for the floating particle effect
             'float': {
               '0%': { transform: 'translate(0px, 0px) rotate(0deg)' },
               '25%': { transform: 'translate(20px, 40px) rotate(90deg)' },
@@ -32,8 +28,6 @@ module.exports = {
               '75%': { transform: 'translate(-20px, 40px) rotate(270deg)' },
               '100%': { transform: 'translate(0px, 0px) rotate(360deg)' },
             },
-            
-            // --- Existing keyframes ---
             tilt: {
                 '0%, 50%, 100%': {
                     transform: 'rotate(0deg)'
@@ -128,7 +122,6 @@ module.exports = {
     }
   },
   plugins: [
-    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
     require("tailwindcss-animate")
   ],

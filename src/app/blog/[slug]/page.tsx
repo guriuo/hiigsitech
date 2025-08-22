@@ -9,7 +9,6 @@ import { client } from '../../../../sanity/lib/client';
 import { urlForImage } from '../../../../sanity/lib/image';
 import { getFileAsset } from '@sanity/asset-utils';
 import PostViewTracker from './PostViewTracker';
-// ✅ UPDATE: Import the new CommentSection component
 import CommentSection from '../../components/CommentSection';
 
 // --- FONTS ---
@@ -29,7 +28,6 @@ const inter = Inter({
 
 // --- DATA FETCHING ---
 async function getPost(slug: string) {
-  // ✅ UPDATE: Query now fetches nested comments
   const query = `*[_type == "post" && slug.current == $slug][0] {
     _id,
     title,
@@ -116,14 +114,17 @@ const IconClock = ({ className = "w-5 h-5" }) => ( <svg xmlns="http://www.w3.org
 const IconTwitter = ({ className = "w-6 h-6" }) => ( <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16.02 6.13,17.26 8.13,17.29C6.65,18.45 4.81,19.12 2.83,19.12C2.47,19.12 2.12,19.1 1.77,19.04C3.78,20.29 6.14,21.03 8.7,21.03C16,21.03 20.34,14.86 20.34,9.45C20.34,9.27 20.34,9.1 20.33,8.92C21.14,8.35 21.86,7.22 22.46,6Z"></path></svg> );
 const IconLinkedIn = ({ className = "w-6 h-6" }) => ( <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.43 13,11.1V10.13H10.13V18.5H13V13.57C13,12.39 13.5,11.63 14.31,11.63C15.12,11.63 15.87,12.39 15.87,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,6 8,5.12 6.88,5.12C5.76,5.12 5.12,6 5.12,6.88A1.68,1.68 0 0,0 6.88,8.56M8.25,18.5V10.13H5.5V18.5H8.25Z"></path></svg> );
 const IconLink = ({ className = "w-6 h-6" }) => ( <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg> );
-const IconUser = ({ className = "w-5 h-5" }) => ( <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg> );
-const IconMail = ({ className = "w-5 h-5" }) => ( <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> );
 const IconFile = ({ className = "w-6 h-6" }) => ( <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg> );
 const IconLinkExternal = ({ className = "w-6 h-6" }) => ( <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg> );
 
+type BlogPostPageProps = {
+  params: {
+    slug: string;
+  };
+};
 
 // --- MAIN BLOG POST PAGE COMPONENT ---
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = await getPost(params.slug);
   if (!post) notFound();
 
@@ -211,12 +212,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               </div>
             </article>
             
-            {/* ✅ UPDATE: This entire section is now handled by the new component */}
             <CommentSection initialComments={post.comments || []} postId={post._id} />
 
           </div>
 
-          {/* You can keep or remove this section for related posts */}
           <section className="max-w-5xl mx-auto mt-20">
             <h2 className="font-poppins text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">You Might Also Like</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

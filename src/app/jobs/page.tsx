@@ -42,13 +42,12 @@ const JobCard = ({ title, location, type, onApply }: { title: string, location: 
     <motion.div
       variants={itemVariants}
       whileHover={{ scale: 1.05, z: 20 }}
-      // This creates the 3D tilt effect on hover
       style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
       className="group bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:border-blue-500 h-full flex flex-col"
     >
       <div 
         className="flex-grow"
-        style={{ transform: "translateZ(20px)" }} // Lifts content towards the user
+        style={{ transform: "translateZ(20px)" }}
       >
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
         <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-500 dark:text-gray-400">
@@ -67,11 +66,15 @@ const JobCard = ({ title, location, type, onApply }: { title: string, location: 
       </div>
       <div 
         className="mt-6"
-        style={{ transform: "translateZ(40px)" }} // Lifts the button even more
+        style={{ transform: "translateZ(40px)" }}
       >
-        <button onClick={() => onApply({ title, location, type })} className="connect-button w-full">
+        {/* ✅ MODIFIED BUTTON: Smaller, responsive, and keeps text/arrow on one line */}
+        <button 
+          onClick={() => onApply({ title, location, type })} 
+          className="group w-full flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-700 active:scale-95"
+        >
           <span>Apply Now</span>
-          <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+          <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
         </button>
       </div>
     </motion.div>
@@ -87,6 +90,26 @@ const BenefitCard = ({ icon: Icon, title, description }: { icon: React.ElementTy
     </motion.div>
 );
 
+// Helper component for form inputs inside the modal
+const InputField = ({ id, label, type = 'text', icon: Icon }: { id: string, label: string, type?: string, icon: React.ElementType }) => (
+  <div>
+    <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>
+    <div className="relative">
+      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <Icon className="h-5 w-5 text-gray-400" />
+      </div>
+      <input
+        type={type}
+        id={id}
+        name={id}
+        required
+        className="block w-full rounded-md border-gray-300 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-white pl-10 focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5"
+        placeholder={`Your ${label.toLowerCase()}`}
+      />
+    </div>
+  </div>
+);
+
 const ApplicationModal = ({ job, onClose }: { job: Job | null; onClose: () => void }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -94,7 +117,6 @@ const ApplicationModal = ({ job, onClose }: { job: Job | null; onClose: () => vo
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate an API call
         setTimeout(() => {
             setIsSubmitting(false);
             setIsSubmitted(true);
@@ -102,7 +124,6 @@ const ApplicationModal = ({ job, onClose }: { job: Job | null; onClose: () => vo
     };
 
     const handleClose = () => {
-        // Reset state before closing
         setIsSubmitted(false);
         onClose();
     };
@@ -116,7 +137,7 @@ const ApplicationModal = ({ job, onClose }: { job: Job | null; onClose: () => vo
               transition={{ duration: 0.3, ease: 'easeOut' }}
               className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col"
             >
-              <header className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
+              <header className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800 flex-shrink-0">
                   <div>
                       <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Apply for {job?.title}</h2>
                       <p className="text-gray-500 dark:text-gray-400">{job?.location} &middot; {job?.type}</p>
@@ -126,10 +147,11 @@ const ApplicationModal = ({ job, onClose }: { job: Job | null; onClose: () => vo
                   </button>
               </header>
 
+              {/* ✅ MODIFIED FORM AREA: overflow-y-auto makes this part scrollable */}
               <div className="overflow-y-auto p-8 flex-grow">
                   <AnimatePresence mode="wait">
                       {isSubmitted ? (
-                          <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
+                          <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12 flex flex-col items-center justify-center h-full">
                               <div className="inline-block p-4 bg-green-100 text-green-600 rounded-full">
                                   <Check className="h-12 w-12" />
                               </div>
@@ -139,15 +161,61 @@ const ApplicationModal = ({ job, onClose }: { job: Job | null; onClose: () => vo
                           </motion.div>
                       ) : (
                           <motion.form key="form" exit={{ opacity: 0 }} onSubmit={handleSubmit} className="space-y-6">
-                              {/* Form fields are styled to match your other forms */}
+                              {/* ✅ ADDED FORM FIELDS: Makes the content long enough to require scrolling */}
+                              <InputField id="fullName" label="Full Name" icon={User} />
+                              <InputField id="email" label="Email Address" type="email" icon={Mail} />
+                              <InputField id="phone" label="Phone Number" type="tel" icon={Phone} />
+
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Resume / CV</label>
+                                <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 dark:border-gray-700 px-6 pt-5 pb-6">
+                                  <div className="space-y-1 text-center">
+                                    <UploadCloud className="mx-auto h-12 w-12 text-gray-400"/>
+                                    <div className="flex text-sm text-gray-600 dark:text-gray-400">
+                                      <label htmlFor="file-upload" className="relative cursor-pointer rounded-md font-medium text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:text-blue-500">
+                                        <span>Upload a file</span>
+                                        <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                                      </label>
+                                      <p className="pl-1">or drag and drop</p>
+                                    </div>
+                                    <p className="text-xs text-gray-500">PDF, DOCX up to 10MB</p>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div>
+                                <label htmlFor="cover-letter" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cover Letter</label>
+                                <textarea id="cover-letter" name="cover-letter" rows={4} className="block w-full rounded-md border-gray-300 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Tell us why you're a great fit for this role..."></textarea>
+                              </div>
+
+                              {/* The submit button is moved to the footer below */}
                           </motion.form>
                       )}
                   </AnimatePresence>
               </div>
+
+              {/* Modal Footer */}
+              {!isSubmitted && (
+                <footer className="flex-shrink-0 p-6 border-t border-gray-200 dark:border-gray-800">
+                  <button type="submit" form="application-form" onClick={handleSubmit} disabled={isSubmitting} className="w-full flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed">
+                    {isSubmitting ? (
+                      <>
+                        <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}>
+                          <Loader size={20} />
+                        </motion.div>
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      'Submit Application'
+                    )}
+                  </button>
+                </footer>
+              )}
             </motion.div>
         </div>
     );
 };
+
 
 // --- Main Careers Page Component ---
 export default function CareersPage() {
