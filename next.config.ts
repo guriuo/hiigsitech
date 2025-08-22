@@ -4,15 +4,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.sanity.io', // For Sanity images
+        hostname: 'cdn.sanity.io',
       },
       {
         protocol: 'https',
-        hostname: 'placehold.co', // ✅ ADDED: For fallback images
+        hostname: 'placehold.co', // ✅ ADDED
       },
       {
         protocol: 'https',
-        hostname: 'i.pravatar.cc', // For author placeholders
+        hostname: 'i.pravatar.cc',
       },
       {
         protocol: 'https',

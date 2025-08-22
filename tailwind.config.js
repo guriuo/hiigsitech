@@ -122,6 +122,7 @@ module.exports = {
     }
   },
   plugins: [
+    // require('@tailwindcss/line-clamp'), // ✅ REMOVED this line
     require('@tailwindcss/typography'),
     require("tailwindcss-animate")
   ],
