@@ -21,7 +21,7 @@ const nextConfig = {
     ],
   },
   eslint: {
-    // This will skip ESLint errors during the build
+    // This will skip ESLint errors d
     ignoreDuringBuilds: true,
   },
   typescript: {
