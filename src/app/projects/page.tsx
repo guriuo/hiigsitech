@@ -17,36 +17,51 @@ type Project = {
   excerpt: string;
 };
 
-// --- Reusable Project Card Component (UPDATED) ---
+// --- Animation Variants for Staggering ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1 // This will animate each child with a 0.1s delay
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' }
+  }
+};
+
+
+// --- Reusable Project Card Component ---
 const ProjectCard = ({ project }: { project: Project }) => (
+  // The card now uses the `cardVariants`
   <motion.div
-    layout
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.8 }}
+    variants={cardVariants}
+    layout // Keep the layout prop for smooth repositioning
+    exit={{ opacity: 0, scale: 0.8 }} // You can still have a custom exit animation
     transition={{ duration: 0.4, ease: 'backOut' }}
     className="group relative h-[500px] rounded-2xl overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300"
   >
     <Link href={`/projects/${project.slug}`} className="absolute inset-0 z-20" aria-label={`View project: ${project.title}`}></Link>
     
-    {/* Full-bleed image */}
     <img 
       src={urlForImage(project.coverImage).width(800).height(1000).url()} 
       alt={project.title} 
       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
     />
     
-    {/* Gradient overlay for text readability */}
     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-    {/* Content overlaid on the image */}
     <div className="absolute inset-0 p-6 flex flex-col justify-between text-white z-10">
-        {/* Top section with Tag */}
         <div>
             <span className="text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full">{project.category}</span>
         </div>
-
-        {/* Bottom section with Title, Description, and Button */}
         <div className="flex justify-between items-end">
             <div className="w-3/4">
                 <h3 className="text-2xl font-semibold">{project.title}</h3>
@@ -63,7 +78,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
   </motion.div>
 );
 
-// --- Main Projects Page Component ---
+// --- Main Projects Page Component (UPDATED) ---
 export default function ProjectsPage() {
   const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
@@ -148,8 +163,16 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          {/* Projects Grid */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Projects Grid (UPDATED) */}
+          <motion.div 
+            layout // Keep this for the grid repositioning animation
+            // Add a transition prop to make the grid rearrange faster
+            transition={{ type: "spring", stiffness: 400, damping: 40 }} 
+            variants={containerVariants} // Use the container variants
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
             <AnimatePresence>
               {!isLoading && filteredProjects.map((project) => (
                 <ProjectCard key={project._id} project={project} />
