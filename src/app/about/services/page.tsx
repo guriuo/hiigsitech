@@ -81,7 +81,7 @@ export default function ServicesPage() {
                         Transform Your Ideas Into Digital Success
                     </motion.h1>
                     <motion.p variants={itemVariants} className="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        At Aleen Creatives, we deliver premium solutions across web, mobile, design, and marketing that drive real business results.
+                        At Hiigsi Tech, we deliver premium solutions across web, mobile, design, and marketing that drive real business results.
                     </motion.p>
                     <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
                         <Link href="/contact" className="connect-button inline-flex items-center justify-center text-lg">
@@ -179,7 +179,7 @@ export default function ServicesPage() {
                     <div className="mt-16 grid lg:grid-cols-3 gap-8 items-stretch">
                         {/* Starter Plan */}
                         <motion.div variants={itemVariants} className="relative p-8 rounded-2xl bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 flex flex-col">
-                            <h3 className="text-2xl font-semibold">Starter</h3>
+                            <h3 className="text-2xl font-semibold">Bilow</h3>
                             <p className="mt-4 text-gray-600 dark:text-gray-400">For new businesses ready to make a professional mark.</p>
                             <ul className="mt-8 space-y-4 text-left flex-grow">
                                 {growthFeatures.starter.map(f => <li key={f} className="flex items-start gap-3"><Check className="w-5 h-5 text-blue-500 flex-shrink-0 mt-1" /><span>{f}</span></li>)}
@@ -193,7 +193,7 @@ export default function ServicesPage() {
                                     <Star className="w-4 h-4" /> Most Popular
                                 </span>
                             </div>
-                            <h3 className="text-2xl font-semibold">Growth</h3>
+                            <h3 className="text-2xl font-semibold">Koriin</h3>
                             <p className="mt-4 text-blue-100">For businesses aiming for rapid expansion and market presence.</p>
                             <ul className="mt-8 space-y-4 text-left flex-grow">
                                 {growthFeatures.growth.map(f => <li key={f} className="flex items-start gap-3"><Check className="w-5 h-5 text-white flex-shrink-0 mt-1" /><span>{f}</span></li>)}
@@ -222,7 +222,7 @@ export default function ServicesPage() {
                 className="py-24 px-4 bg-gray-50 dark:bg-black/50"
             >
                 <div className="max-w-6xl mx-auto text-center">
-                    <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white">Why Aleen Creatives</h2>
+                    <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white">Why Hiigsi Tech</h2>
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">We combine innovative solutions, measurable results, and a client-focused approach to deliver unparalleled value.</p>
                     <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8">
                         <motion.div variants={itemVariants} className="text-center">
@@ -255,7 +255,7 @@ export default function ServicesPage() {
                         <motion.div variants={itemVariants} className="p-8 bg-gray-50 dark:bg-gray-900/50 rounded-xl">
                             <Quote className="w-8 h-8 mx-auto text-blue-400" />
                             <blockquote className="mt-4 text-xl italic text-gray-700 dark:text-gray-300">
-                                "Aleen Creatives is the partner you want on your team. Their dedication to quality and results is evident in everything they do."
+                                "Hiigsi Tech is the partner you want on your team. Their dedication to quality and results is evident in everything they do."
                             </blockquote>
                             <cite className="mt-4 block font-semibold not-italic">- Client Name, Company</cite>
                         </motion.div>

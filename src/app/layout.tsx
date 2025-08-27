@@ -12,7 +12,7 @@ import AuthProvider from './components/AuthProvider';
 import BackToTopButton from "./components/BackToTopButton";
 
 export const metadata: Metadata = {
-  title: "Aleen Creatives",
+  title: "Hiigsi Tech",
   description: "Modern Solutions for Modern Businesses",
 };
 

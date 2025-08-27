@@ -134,7 +134,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 w-full px-3 sm:px-8 py-3 flex justify-between items-center z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800/50">
-        <Link href="/" className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Aleen Creatives</Link>
+        <Link href="/" className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Hiigsi Tech</Link>
         
         <nav className="hidden md:flex flex-grow justify-center">
             <div className="flex items-center space-x-2 relative">

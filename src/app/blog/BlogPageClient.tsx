@@ -108,8 +108,6 @@ export default function BlogPageClient({ latestPosts: latestPostsRaw, popularPos
       )
     : [];
 
-  // This hardcoded example assumes you fetched these posts separately
-  // In a real app, you would pass these as props from page.tsx
   const featuredCategoryPosts = popularPosts.slice(0,3);
 
   return (
@@ -119,7 +117,8 @@ export default function BlogPageClient({ latestPosts: latestPostsRaw, popularPos
       <motion.section 
         ref={heroRef}
         onMouseMove={handleMouseMove}
-        className="relative pt-40 pb-24 text-center overflow-hidden"
+        // ✅ UPDATED: Reduced bottom padding further from pb-12 to pb-8
+        className="relative pt-40 pb-8 text-center overflow-hidden"
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -143,7 +142,6 @@ export default function BlogPageClient({ latestPosts: latestPostsRaw, popularPos
                 <div className="relative">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                     <input type="text" placeholder="Search for articles..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-                        // ✅ UPDATED: Added blue border on focus for a "stroke" effect
                         className="w-full pl-12 pr-4 py-4 rounded-full bg-white/50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 shadow-sm backdrop-blur-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" />
                 </div>
             </motion.div>
@@ -161,7 +159,14 @@ export default function BlogPageClient({ latestPosts: latestPostsRaw, popularPos
         </section>
       ) : (
         <>
-          <motion.section className="py-20 px-4" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+          <motion.section 
+            // ✅ UPDATED: Reduced top padding further from py-12 to pt-8
+            className="pt-8 pb-12 px-4" 
+            variants={sectionVariants} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, amount: 0.1 }}
+          >
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Latest Insights</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -208,9 +213,6 @@ export default function BlogPageClient({ latestPosts: latestPostsRaw, popularPos
             </motion.section>
           )}
 
-         
-
-          {/* ✅ RESTORED: Newsletter CTA Section */}
           <motion.section className="py-20 px-4" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
             <div className="max-w-2xl mx-auto text-center p-8 bg-gray-100 dark:bg-gray-800/50 rounded-2xl">
                 <Mail className="w-10 h-10 mx-auto text-blue-500" />
@@ -222,7 +224,6 @@ export default function BlogPageClient({ latestPosts: latestPostsRaw, popularPos
             </div>
           </motion.section>
 
-          {/* ✅ RESTORED: Big Blue Marketing CTA Section */}
           <motion.section className="py-20 px-4 bg-blue-600 text-white" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
             <div className="max-w-4xl mx-auto text-center">
               <motion.h2 variants={itemVariants} className="text-4xl font-extrabold">

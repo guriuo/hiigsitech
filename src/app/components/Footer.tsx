@@ -48,7 +48,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
           {/* Column 1: Brand */}
           <div className="col-span-2 lg:col-span-2">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Aleen Creatives</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hiigsi Tech</h3>
             <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-xs">
               We are a forward-thinking digital agency dedicated to crafting bespoke solutions
               that drive growth, engagement, and success.
@@ -94,7 +94,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8 text-center">
           <p className="text-sm text-gray-500 dark:text-gray-500">
-            © {new Date().getFullYear()} Aleen Creatives. All rights reserved.
+            © {new Date().getFullYear()} Hiigsi Tech. All rights reserved.
           </p>
         </div>
       </div>

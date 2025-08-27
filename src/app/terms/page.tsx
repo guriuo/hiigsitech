@@ -23,7 +23,7 @@ export default function TermsOfService() {
           <section>
             <h2>1. Agreement to Terms</h2>
             <p>
-              By accessing our website, engaging our services, or interacting with any platform owned by Aleen Creatives ("we," "us," "our," or the "Company"), you agree to be bound by these Terms of Service ("Terms"). These Terms constitute a legally binding agreement governing your use of our website, products, and services (collectively, the "Services"). If you are using the Services on behalf of an organization, you are agreeing to these Terms for that organization and promising that you have the authority to bind that organization to these terms. In that case, "you" and "your" will refer to that organization. If you do not agree to these Terms, you must not access or use our Services.
+              By accessing our website, engaging our services, or interacting with any platform owned by Hiigsi Tech ("we," "us," "our," or the "Company"), you agree to be bound by these Terms of Service ("Terms"). These Terms constitute a legally binding agreement governing your use of our website, products, and services (collectively, the "Services"). If you are using the Services on behalf of an organization, you are agreeing to these Terms for that organization and promising that you have the authority to bind that organization to these terms. In that case, "you" and "your" will refer to that organization. If you do not agree to these Terms, you must not access or use our Services.
             </p>
             <p>
               We reserve the right, in our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. Your continued use of the Services after any such changes become effective constitutes your acceptance of the new Terms.
@@ -33,7 +33,7 @@ export default function TermsOfService() {
           <section>
             <h2>2. Our Services</h2>
             <p>
-              Aleen Creatives provides a suite of digital agency services, which may include, but are not limited to, web and application development, UI/UX design, branding strategy, and digital consulting. The precise scope, deliverables, timelines, and fees for any project will be detailed in a separate, written Statement of Work (SOW) or Project Proposal, which, once executed, becomes an integral part of these Terms. We reserve the right to withdraw or amend our Services, and any service or material we provide, in our sole discretion without notice. We will not be liable if for any reason all or any part of the Services are unavailable at any time or for any period.
+              Hiigsi Tech provides a suite of digital agency services, which may include, but are not limited to, web and application development, UI/UX design, branding strategy, and digital consulting. The precise scope, deliverables, timelines, and fees for any project will be detailed in a separate, written Statement of Work (SOW) or Project Proposal, which, once executed, becomes an integral part of these Terms. We reserve the right to withdraw or amend our Services, and any service or material we provide, in our sole discretion without notice. We will not be liable if for any reason all or any part of the Services are unavailable at any time or for any period.
             </p>
           </section>
 
@@ -80,14 +80,14 @@ export default function TermsOfService() {
           <section>
             <h2>8. Limitation of Liability</h2>
             <p>
-              TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL ALEEN CREATIVES, ITS AFFILIATES, OR THEIR LICENSORS, SERVICE PROVIDERS, EMPLOYEES, AGENTS, OFFICERS, OR DIRECTORS BE LIABLE FOR DAMAGES OF ANY KIND, UNDER ANY LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH YOUR USE, OR INABILITY TO USE, THE SERVICES, INCLUDING ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO, PERSONAL INJURY, PAIN AND SUFFERING, EMOTIONAL DISTRESS, LOSS OF REVENUE, LOSS OF PROFITS, LOSS OF BUSINESS OR ANTICIPATED SAVINGS, LOSS OF USE, LOSS OF GOODWILL, LOSS OF DATA, AND WHETHER CAUSED BY TORT (INCLUDING NEGLIGENCE), BREACH OF CONTRACT, OR OTHERWISE, EVEN IF FORESEEABLE. OUR TOTAL AGGREGATE LIABILITY FOR ANY AND ALL CLAIMS ARISING OUT OF THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE TOTAL AMOUNT OF FEES PAID BY YOU TO US IN THE SIX (6) MONTHS PRIOR TO THE EVENT GIVING RISE TO THE CLAIM.
+              TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL Hiigsi Tech, ITS AFFILIATES, OR THEIR LICENSORS, SERVICE PROVIDERS, EMPLOYEES, AGENTS, OFFICERS, OR DIRECTORS BE LIABLE FOR DAMAGES OF ANY KIND, UNDER ANY LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH YOUR USE, OR INABILITY TO USE, THE SERVICES, INCLUDING ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO, PERSONAL INJURY, PAIN AND SUFFERING, EMOTIONAL DISTRESS, LOSS OF REVENUE, LOSS OF PROFITS, LOSS OF BUSINESS OR ANTICIPATED SAVINGS, LOSS OF USE, LOSS OF GOODWILL, LOSS OF DATA, AND WHETHER CAUSED BY TORT (INCLUDING NEGLIGENCE), BREACH OF CONTRACT, OR OTHERWISE, EVEN IF FORESEEABLE. OUR TOTAL AGGREGATE LIABILITY FOR ANY AND ALL CLAIMS ARISING OUT OF THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE TOTAL AMOUNT OF FEES PAID BY YOU TO US IN THE SIX (6) MONTHS PRIOR TO THE EVENT GIVING RISE TO THE CLAIM.
             </p>
           </section>
 
           <section>
             <h2>9. Indemnification</h2>
             <p>
-              You agree to defend, indemnify, and hold harmless Aleen Creatives, its officers, directors, employees, and agents, from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Services, including, but not limited to, any use of the Service's content, services, and products other than as expressly authorized in these Terms or your use of any information obtained from the Services.
+              You agree to defend, indemnify, and hold harmless Hiigsi Tech, its officers, directors, employees, and agents, from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Services, including, but not limited to, any use of the Service's content, services, and products other than as expressly authorized in these Terms or your use of any information obtained from the Services.
             </p>
           </section>
 
@@ -103,7 +103,7 @@ export default function TermsOfService() {
             <p>
               For any questions about these Terms, please contact us.
               <br /><br />
-              <strong>Aleen Creatives</strong>
+              <strong>Hiigsi Tech</strong>
               <br />
               Hargeisa, Somalia
               <br />

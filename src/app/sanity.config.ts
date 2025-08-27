@@ -11,7 +11,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
 export default defineConfig({
   basePath: '/studio', // This is the URL for your admin panel
   name: 'Aleen_Creatives_Content_Studio',
-  title: 'Aleen Creatives Studio',
+  title: 'Hiigsi Tech Studio',
   projectId,
   dataset,
   plugins: [

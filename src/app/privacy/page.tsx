@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2>1. Introduction and Scope</h2>
             <p>
-              Welcome to Aleen Creatives ("we," "our," or "us"). We are steadfast in our commitment to protecting your privacy and handling your data in an open and transparent manner. This Privacy Policy is designed to provide a comprehensive overview of how we collect, use, disclose, process, and safeguard your information when you visit our website, engage with our services, or interact with us through any digital medium. This policy applies to all information collected through our website, as well as any related services, sales, marketing, or events.
+              Welcome to Hiigsi Tech ("we," "our," or "us"). We are steadfast in our commitment to protecting your privacy and handling your data in an open and transparent manner. This Privacy Policy is designed to provide a comprehensive overview of how we collect, use, disclose, process, and safeguard your information when you visit our website, engage with our services, or interact with us through any digital medium. This policy applies to all information collected through our website, as well as any related services, sales, marketing, or events.
             </p>
             <p>
               Please read this policy meticulously to understand our views and practices regarding your personal data and how we will treat it. By accessing our site or utilizing our services, you acknowledge that you have read, understood, and agree to the practices described in this policy. If you do not agree with the terms herein, your choice is not to use our website or services. We may update this policy from time to time, and your continued use after we make changes is deemed to be acceptance of those changes, so please check the policy periodically for updates.
@@ -111,7 +111,7 @@ export default function PrivacyPolicy() {
             <p>
               If you have any questions, comments, or concerns about this Privacy Policy or our data practices, please do not hesitate to contact us.
               <br /><br />
-              <strong>Aleen Creatives</strong>
+              <strong>Hiigsi Tech</strong>
               <br />
               Hargeisa, Somalia
               <br />

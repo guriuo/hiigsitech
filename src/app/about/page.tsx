@@ -91,7 +91,6 @@ export default function AboutPage() {
         { num: "04", name: "Launch & Evolve", desc: "Delivering high-impact results and providing ongoing support for growth." },
     ];
     
-    // ✅ UPDATED: Expanded testimonials with Somali names and shorter quotes
     const testimonials = [
         { quote: "Their team delivered our project on time and exceeded all our initial expectations.", name: "Ahmed Yusuf", company: "Tech Solutions Inc." },
         { quote: "A truly professional and dedicated partner who provided invaluable strategic insights for our company.", name: "Amina Ali", company: "Innovate Group" },
@@ -108,12 +107,11 @@ export default function AboutPage() {
 
     const [testimonialIndex, setTestimonialIndex] = useState(0);
     
-    // ✅ UPDATED: Added auto-carousel logic
     useEffect(() => {
         const timer = setInterval(() => {
             setTestimonialIndex(prev => (prev + 1) % testimonials.length);
-        }, 5000); // Change slide every 5 seconds
-        return () => clearInterval(timer); // Cleanup on component unmount
+        }, 5000); 
+        return () => clearInterval(timer);
     }, [testimonials.length]);
 
     const paginate = (direction: number) => {
@@ -123,7 +121,6 @@ export default function AboutPage() {
 
   return (
     <>
-    {/* ✅ UPDATED: Added new keyframes for the animated gradient background */}
     <style jsx global>{`
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
       body {
@@ -148,8 +145,8 @@ export default function AboutPage() {
       className="bg-white dark:bg-black"
     >
       {/* --- 1. Hero Section --- */}
-      <section className="relative pt-36 pb-20 text-center overflow-hidden">
-        {/* ✅ UPDATED: New animated gradient background */}
+      {/* ✅ UPDATED: Reduced bottom padding from pb-20 to pb-12 */}
+      <section className="relative pt-36 pb-12 text-center overflow-hidden">
         <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gray-50 dark:bg-black"></div>
             <div 
@@ -172,7 +169,7 @@ export default function AboutPage() {
             We Transform Ideas Into Powerful Realities
           </motion.h1>
           <motion.p variants={itemVariants} className="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Aleen Creatives is a thriving business agency founded and led by Mubarik Osman — a visionary in the digital world.
+            Hiigsi Tech is a thriving business agency founded and led by Mubarik Osman — a visionary in the digital world.
           </motion.p>
           <motion.div variants={itemVariants} className="mt-8">
             <Link href="/portfolio" className="inline-flex items-center justify-center bg-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105 duration-300 text-sm">
@@ -188,7 +185,8 @@ export default function AboutPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="py-20 px-4"
+        // ✅ UPDATED: Reduced vertical padding from py-20 to py-12
+        className="py-12 px-4"
       >
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={itemVariants}>
@@ -197,7 +195,7 @@ export default function AboutPage() {
                     We specialize in crafting cutting-edge web applications, mobile apps, UI/UX designs, digital marketing strategies, motion graphics, and business consulting that empower brands to stand out in a crowded market. Our team combines strategic thinking with bold creativity, delivering solutions that are not only visually striking but also business-driven.
                 </p>
                 <p className="mt-4 text-gray-600 dark:text-gray-300">
-                    Every project is an opportunity to innovate, inspire, and achieve measurable results. With a track record of excellence and a passion for results, Aleen Creatives continues to be the go-to partner for ambitious brands ready to make an impact.
+                    Every project is an opportunity to innovate, inspire, and achieve measurable results. With a track record of excellence and a passion for results, Hiigsi Tech continues to be the go-to partner for ambitious brands ready to make an impact.
                 </p>
             </motion.div>
             <motion.div variants={itemVariants} className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
@@ -213,7 +211,8 @@ export default function AboutPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="py-20 px-4 bg-gray-50 dark:bg-black/50"
+        // ✅ UPDATED: Reduced vertical padding from py-20 to py-12
+        className="py-12 px-4 bg-gray-50 dark:bg-black/50"
       >
         <SectionTitle>What Makes Us Different</SectionTitle>
         <div className="max-w-6xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -237,7 +236,8 @@ export default function AboutPage() {
       </motion.section>
       
       {/* --- 4. Testimonial Carousel Section --- */}
-      <section className="py-20 px-4 relative">
+      {/* ✅ UPDATED: Reduced vertical padding from py-20 to py-12 */}
+      <section className="py-12 px-4 relative">
         <div className="max-w-4xl mx-auto text-center">
             <Quote className="w-12 h-12 mx-auto text-blue-400 dark:text-blue-600" />
             <div className="relative h-48 mt-6 overflow-hidden">
@@ -272,7 +272,8 @@ export default function AboutPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="py-20 px-4 bg-gray-50 dark:bg-black/50"
+        // ✅ UPDATED: Reduced vertical padding from py-20 to py-12
+        className="py-12 px-4 bg-gray-50 dark:bg-black/50"
        >
          <SectionTitle>Our Process</SectionTitle>
          <div className="max-w-6xl mx-auto mt-16">
@@ -297,7 +298,8 @@ export default function AboutPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="py-20 px-4"
+        // ✅ UPDATED: Reduced vertical padding from py-20 to py-12
+        className="py-12 px-4"
       >
         <SectionTitle>Industries We Serve</SectionTitle>
         <div className="max-w-5xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
@@ -316,7 +318,8 @@ export default function AboutPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="py-20 px-4 bg-gray-50 dark:bg-black/50"
+        // ✅ UPDATED: Reduced vertical padding from py-20 to py-12
+        className="py-12 px-4 bg-gray-50 dark:bg-black/50"
       >
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
             {achievements.map((stat) => (
@@ -336,7 +339,8 @@ export default function AboutPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="py-20 px-4 text-center"
+        // ✅ UPDATED: Reduced vertical padding from py-20 to py-12
+        className="py-12 px-4 text-center"
       >
         <SectionTitle>Meet the Founder</SectionTitle>
         <div className="mt-16 flex justify-center" style={{ perspective: '1000px' }}>
@@ -362,7 +366,8 @@ export default function AboutPage() {
 
       {/* --- 9. Call to Action --- */}
       <section className="bg-blue-600 text-white">
-        <div className="max-w-5xl mx-auto py-20 px-4 text-center">
+        {/* ✅ UPDATED: Reduced vertical padding from py-20 to py-12 */}
+        <div className="max-w-5xl mx-auto py-12 px-4 text-center">
             <motion.h2
               variants={itemVariants}
               initial="hidden"

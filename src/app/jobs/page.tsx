@@ -261,7 +261,7 @@ export default function CareersPage() {
                                     <span className="block text-blue-600">Innovators</span>
                                 </motion.h1>
                                 <motion.p variants={itemVariants} className="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                    At Aleen Creatives, we are a collective of creators, thinkers, and builders passionate about crafting exceptional digital experiences. If you thrive on challenges and innovation, you've found your people.
+                                    At Hiigsi Tech, we are a collective of creators, thinkers, and builders passionate about crafting exceptional digital experiences. If you thrive on challenges and innovation, you've found your people.
                                 </motion.p>
                             </motion.div>
                         </main>

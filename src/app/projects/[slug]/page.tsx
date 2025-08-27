@@ -1,32 +1,48 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { client } from '../../../../sanity/lib/client'; // Adjust path
-import ProjectView from './ProjectView'; // <-- THIS PATH IS NOW CORRECTED
+import { client } from '../../../../sanity/lib/client';
+import ProjectView from './ProjectView';
 
-// --- Type Definitions ---
-// It's good practice to define types that can be shared
-export type GalleryImage = {
-  _key: string;
-  _type: 'galleryImage';
-  asset: any;
-  tag: 'App' | 'Web' | 'Branding';
-};
-
+// --- UPDATED: Type Definitions for the new schema ---
 export type Project = {
   title: string;
   coverImage: any;
   client: string;
   industry: string;
-  duration: string;
+  startDate?: string; // Changed from duration
+  endDate?: string;   // Changed from duration
   role: string;
-  body: any[];
-  gallery: GalleryImage[];
+  body: any[]; // Body now contains all content blocks
+  metaTitle?: string;
+  metaDescription?: string;
+  openGraphImage?: any;
 };
 
-// --- Data Fetching Function ---
+// --- UPDATED: Data Fetching Function ---
 async function getProject(slug: string): Promise<Project> {
+  // The query now fetches the new date fields and the entire body array,
+  // including the content of custom blocks like imageGallery and videoEmbed.
   const query = `*[_type == "project" && slug.current == $slug][0] {
-    title, coverImage, client, industry, duration, role, body, gallery
+    title,
+    coverImage,
+    client,
+    industry,
+    startDate,
+    endDate,
+    role,
+    body[]{
+      ..., 
+      _type == "imageGallery" => {
+        ...,
+        images[]{
+          ...,
+          asset->
+        }
+      }
+    },
+    metaTitle,
+    metaDescription,
+    openGraphImage
   }`;
   const project = await client.fetch(query, { slug });
   return project;
@@ -36,11 +52,9 @@ async function getProject(slug: string): Promise<Project> {
 export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const project = await getProject(params.slug);
 
-  // If no project is found, show the 404 page
   if (!project) {
     notFound();
   }
 
-  // Render the Client Component and pass the fetched data as a prop
   return <ProjectView project={project} />;
 }

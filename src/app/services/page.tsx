@@ -195,7 +195,7 @@ export default function ServicesPage() {
                         Transform Your Ideas Into Digital Success
                     </motion.h1>
                     <motion.p variants={itemVariants} className="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        At Aleen Creatives, we deliver premium solutions across web, mobile, design, and marketing that drive real business results.
+                        At Hiigsi Tech, we deliver premium solutions across web, mobile, design, and marketing that drive real business results.
                     </motion.p>
                     <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
                         <Link href="/contact" className="group relative inline-flex items-center justify-center text-lg bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300 overflow-hidden">

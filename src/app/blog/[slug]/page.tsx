@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Inter, Poppins } from 'next/font/google';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { notFound } from 'next/navigation';
+import { groq } from 'next-sanity';
+import type { Metadata } from 'next';
 
 // --- SANITY & ASSETS ---
 import { client } from '../../../../sanity/lib/client';
@@ -26,7 +28,76 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-// --- DATA FETCHING ---
+// Define the props for the page, including the slug
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+// ==================================================================
+// ✅ 1. ADDED: The generateMetadata function
+// This function runs on the server to generate the <head> tags for SEO and link previews.
+// ==================================================================
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // Fetch only the data needed for metadata
+  const query = groq`*[_type == "post" && slug.current == $slug][0] {
+    title,
+    "slug": slug.current,
+    metaDescription,
+    excerpt,
+    coverImage,
+    coverImageUrl
+  }`;
+
+  const post = await client.fetch(query, { slug: params.slug });
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: 'This post could not be found.',
+    };
+  }
+
+  // Use the dedicated 'metaDescription' field if it exists, otherwise use the 'excerpt'.
+  const description = post.metaDescription || post.excerpt.substring(0, 155).trim() + '...';
+  
+  // Use the uploaded 'coverImage' first, then the URL fallback, then a default placeholder.
+  const imageUrl = post.coverImage 
+    ? urlForImage(post.coverImage).width(1200).height(630).fit('crop').url()
+    : post.coverImageUrl || 'https://your-website.com/default-image.jpg'; // IMPORTANT: Replace with your actual default image URL
+
+  return {
+    title: post.title,
+    description: description,
+    openGraph: {
+      title: post.title,
+      description: description,
+      url: `https://your-website.com/blog/${post.slug}`, // IMPORTANT: Replace with your actual domain
+      siteName: 'Your Blog Name', // Replace with your blog's name
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      locale: 'en_US', // Change if your blog is in a different language
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: description,
+      images: [imageUrl],
+      creator: '@yourTwitterHandle', // Optional: Replace with your Twitter handle
+    },
+  };
+}
+
+
+// --- DATA FETCHING for the page content ---
 async function getPost(slug: string) {
   const query = `*[_type == "post" && slug.current == $slug][0] {
     _id,
@@ -57,7 +128,7 @@ async function getPost(slug: string) {
   return client.fetch(query, { slug });
 }
 
-// --- PORTABLE TEXT COMPONENTS ---
+// --- PORTABLE TEXT COMPONENTS (Your existing components are great) ---
 const ptComponents: PortableTextComponents = {
   types: {
     inlineImage: ({ value }) => {
@@ -109,13 +180,17 @@ const ptComponents: PortableTextComponents = {
   },
 };
 
-// --- SVG ICONS ---
+// --- SVG ICONS (Your existing icons are fine) ---
 const IconArrowLeft = ({ className = "w-5 h-5" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>);
 const IconCalendar = ({ className = "w-5 h-5" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>);
 const IconFile = ({ className = "w-6 h-6" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>);
 const IconLinkExternal = ({ className = "w-6 h-6" }) => (<svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>);
 
-// --- MAIN BLOG POST PAGE COMPONENT ---
+
+// ==================================================================
+// ✅ 2. Your Page Component (No major changes needed here)
+// This part stays mostly the same.
+// ==================================================================
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
   if (!post) notFound();
