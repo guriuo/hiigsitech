@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # *
 User-agent: *
 Allow: /
@@ -6,4 +7,9 @@ Allow: /
 Host: https://hiigsitech.com
 
 # Sitemaps
+=======
+User-agent: *
+Allow: /
+
+>>>>>>> a5c48c7699f04ede4ce829828ea0a4d022842e34
 Sitemap: https://hiigsitech.com/sitemap.xml
