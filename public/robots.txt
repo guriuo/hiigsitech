@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://hiigsitech.com
+
+# Sitemaps
+Sitemap: https://hiigsitech.com/sitemap.xml
