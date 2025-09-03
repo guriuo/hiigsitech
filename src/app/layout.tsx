@@ -6,7 +6,7 @@ import "./globals.css";
 // Your existing components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import AuthProvider from './components/AuthProvider';
+import AuthProvider from "./components/AuthProvider";
 
 // ✅ UPDATE: Import the new BackToTopButton component
 import BackToTopButton from "./components/BackToTopButton";
@@ -14,6 +14,10 @@ import BackToTopButton from "./components/BackToTopButton";
 export const metadata: Metadata = {
   title: "Hiigsi Tech",
   description: "Modern Solutions for Modern Businesses",
+  // ✅ Add your AdSense verification here
+  other: {
+    "google-adsense-account": "ca-pub-3464457348432176",
+  },
 };
 
 export default function RootLayout({
@@ -21,7 +25,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   const themeScript = `
     (function() {
       try {
@@ -41,7 +44,6 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
-          {/* ✅ UPDATE: Add the button here */}
           <BackToTopButton />
         </AuthProvider>
       </body>
